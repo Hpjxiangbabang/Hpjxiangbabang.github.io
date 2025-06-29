@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-CAAFE：基于大模型的自动特征工程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2024-12-19T10:00:00.000Z" itemprop="datePublished">2024-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">CAAFE：基于大模型的自动特征工程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer" />
+
+<p>阅读论文: Large Language Models for Automated  Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering<br>研究背景: 之前做了一些光谱的分类工作，拉曼光谱的<strong>机器学习</strong>分析是建立光谱和标签的映射来抽象出光谱中的复杂关系。<br>这种模式在生物医学环境中的光谱的分析中遇到了困难，例如细胞和组织等，这是因为生物医学的光谱非常复杂，包含了大量的特征，同时还伴有随机噪声和生物学噪声。<br>同时，语言大模型囊括了广泛的领域知识，可用于自动化各种数据科学任务，包括那些需要上下文信息的任务。<br>使用语言大模型将光谱数据和标签做端到端的预测，这种方法需要将整个训练集编码为字符串,并使用基于Transformer的架构进行处理。<br>然而，语言大模型难以解释或验证，其行为的一致性也不如经典的机器学习算法。<br>考虑到，学习其实是一个从原始数据中提取特征，再进行建模以获得知识的一个过程。<br><img src="https://i0.hdslb.com/bfs/openplatform/dc4b03906c4e28de564b3451e36d79045017494a.png" alt="机器学习过程"><br>原始的特征工程中，从原始数据中提取、转换和选择特征，以提高模型的性能。手动方法进行特征构建和选择，不仅是一项非常耗时的任务，并且对数据处理经验和领域知识有较高要求。<br>自动特征工程则是利用算法和自动化工具来完成特征生成、特征选择和特征优化的过程。其目的是通过减少人工干预，使得模型能够在不同类型的数据上更快地找到高质量的特征组合，最终提升模型的表现。<strong>但是其表现取决于算法与数据的适配度。</strong><br>这篇论文Context-Aware Automated Feature Engineering (CAAFE)是一种利用大型语言模型（LLMs）来自动生成数据特征的方法。<br><img src="https://i0.hdslb.com/bfs/openplatform/337ab5ac8d90faea66c4f88ed1819a235ccbb89f.png" alt="特征工程"><br>整个流程图如下所示：<br><img src="https://i0.hdslb.com/bfs/openplatform/b07581f488b625a6895859e7086851a9ea261dcc.png" alt="CAAFE流程图"><br>CAAFE接受数据集以及用户指定的上下文信息，并通过<strong>迭代</strong>完成<strong>自动特征工程</strong>。<br>方法将训练数据集 Dtrain 和验证数据集 Dvalid 以及训练数据集和特征的背景描述作为输入。根据这些信息，CAAFE 构建了一个提示，也就是给大模型的指令，其中包含数据集和特征工程任务的具体内容。该方法会在验证数据集上执行多次迭代特征更改和评估。在每次迭代中，LLM 都会生成代码，然后在当前的 Dtrain 和 Dvalid 上执行，最终生成转换后的数据集 Dtrain′ 和 Dvalid′。然后，我们使用Dtrain′拟合一个 ML 分类器，并在Dvalid′上评估其性能 P ′。如果 P ′ 超过了在Dtrain上训练并在Dvalid上评估所获得的性能 P，则保留该特征，并更新数据集Dtrain和Dvalid。否则，特征将被剔除，数据集保持不变。<br>那么如何构建用于执行特征工程的提示呢？<br>在提示中，LLM 被指示为后续预测任务创建有价值的特征，并为新增特征的效用提供理由。它还会指示放弃不必要的特征，例如当这些特征的信息已被其他创建的特征捕获时。<br>提示会包含以下内容：<br>用户生成的数据集描述，其中包含数据集的上下文信息；<br>添加上下文信息的特征名称，允许LLM生成代码根据名称对特征进行索引；<br>数据的类型(例如float，int、类别、string)——这增加了生成的代码如何处理特征的信息；<br>缺失值的比例，缺失值对于生成代码来说是额外的挑战；<br>数据集的10个随机行，提供特征的规模、编码，等等信息。<br>此外，提示还为生成代码和解释的预期形式提供了模板。在提示时添加模板是提高回复质量的常用技术。<br>使用思维链指令——指示一系列中间推理步骤——这是另一种有效的提示技术。该提示包括一个代码生成特征的思维链示例：首先提供生成特征的高级含义和有用性，提供用于生成特征的特征名称，检索它需要接受的示例值，最后编写一行代码。<br>如果代码块的执行过程中出现错误，该错误将被传递给LLM，用于下一次代码生成迭代。我们注意到，在实验中，CAAFE 利用这种技术从错误中恢复过来。<br><img src="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png" alt="提示内容"><br>文章中提款了一个例子，来源于经典的井字棋数据，感兴趣的同学可以找到这个数据来实验一下。<br>实验的过程大概是这样的：<br><img src="https://i0.hdslb.com/bfs/openplatform/ac2ed8e1473fb8b0e2f4d074166587cca4884ee3.png" alt="井字棋实验过程"><br>关于自动特征工程，它的baseline其实不多，也就深度特征合成DFS(2015)、AutoFeat(2019)、FETCH和OpenFE。<br>分类器有逻辑回归、随机森林和TabPFN。<br>在数据集的挑选上，实验者考虑到了LLM训练的数据，训练时如果包含了这些数据，其实相当于开卷考试。于是实验者找了两部分数据，一部分是在2021年9月之前发布，来自Open ML的广为人知的数据集，这些数据集可能构成训练语料库的一部分；另一部分是在2021年9月之后发布，来自Kaggle的鲜为人知的数据集，这些数据集网络爬虫难以访问。<br>最后的实验结果：<br><img src="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png" alt="实验结果"><br>有些不一定好，但是还是有点提升。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" data-id="cmchfmrfk0000esut6svxau6f" data-title="CAAFE：基于大模型的自动特征工程" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">CAAFE：基于大模型的自动特征工程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
