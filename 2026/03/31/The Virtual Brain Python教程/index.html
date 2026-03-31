@@ -13,12 +13,12 @@
 <meta property="og:site_name" content="象拔蚌沙滩">
 <meta property="og:description" content="本教程仅介绍 Python 中的 tvb 包（源码：https:&#x2F;&#x2F;github.com&#x2F;the-virtual-brain&#x2F;tvb-root），不涉及 The Virtual Brain 作为独立仿真软件的使用。官方网站：https:&#x2F;&#x2F;www.thevirtualbrain.org&#x2F;tvb&#x2F;zwei&#x2F;，官方文档：https:&#x2F;&#x2F;docs.thevirtualbrain.org。本文将帮助你在">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png">
+<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp">
 <meta property="article:published_time" content="2026-03-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-31T15:35:41.968Z">
+<meta property="article:modified_time" content="2026-03-31T15:52:37.292Z">
 <meta property="article:author" content="何文俊">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png">
+<meta name="twitter:image" content="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp">
   
     <link rel="alternate" href="/atom.xml" title="象拔蚌沙滩" type="application/atom+xml">
   
@@ -101,7 +101,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>本教程仅介绍 Python 中的 <code>tvb</code> 包（源码：<a target="_blank" rel="noopener" href="https://github.com/the-virtual-brain/tvb-root%EF%BC%89%EF%BC%8C%E4%B8%8D%E6%B6%89%E5%8F%8A">https://github.com/the-virtual-brain/tvb-root），不涉及</a> The Virtual Brain 作为独立仿真软件的使用。<br>官方网站：<a target="_blank" rel="noopener" href="https://www.thevirtualbrain.org/tvb/zwei/%EF%BC%8C%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%EF%BC%9Ahttps://docs.thevirtualbrain.org%E3%80%82">https://www.thevirtualbrain.org/tvb/zwei/，官方文档：https://docs.thevirtualbrain.org。</a><br>本文将帮助你在 Python 中使用 The Virtual Brain (TVB) 进行神经动力学建模，并生成仿真颅内脑电（iEEG&#x2F;EEG）信号。</p>
+        <p>本教程仅介绍 Python 中的 <code>tvb</code> 包（源码：<a target="_blank" rel="noopener" href="https://github.com/the-virtual-brain/tvb-root%EF%BC%89%EF%BC%8C%E4%B8%8D%E6%B6%89%E5%8F%8A">https://github.com/the-virtual-brain/tvb-root），不涉及</a> The Virtual Brain 作为独立仿真软件的使用。<br>官方网站：<a target="_blank" rel="noopener" href="https://www.thevirtualbrain.org/tvb/zwei/%EF%BC%8C">https://www.thevirtualbrain.org/tvb/zwei/，</a><br>官方文档：<a target="_blank" rel="noopener" href="https://docs.thevirtualbrain.org./">https://docs.thevirtualbrain.org。</a><br>本文将帮助你在 Python 中使用 The Virtual Brain (TVB) 进行神经动力学建模，并生成仿真颅内脑电（iEEG&#x2F;sEEG）信号。</p>
 <p>TVB 仿真的核心逻辑与组件映射<br>TVB 的底层逻辑通过常微分方程（ODEs）模拟大尺度脑网络中神经元群体的平均活动。要生成可用的仿真数据，需配置四个核心组件：</p>
 <ol>
 <li><p>结构连接 (Connectivity)</p>
@@ -116,7 +116,7 @@
 <li>典型模型：<ul>
 <li>Wilson-Cowan (WC)：经典 E-I 模型，结构简洁、易调参。</li>
 <li>Epileptor：5 维非线性，适合癫痫发作与棘波模拟。</li>
-<li>Jansen-Rit (JR)：大脑皮层柱兴奋与抑制交互，适合 EEG&#x2F;iEEG，天然产生 Alpha&#x2F;Beta 震荡。</li>
+<li>Jansen-Rit (JR)：大脑皮层柱兴奋与抑制交互，适合 sEEG&#x2F;iEEG，天然产生 Alpha&#x2F;Beta 震荡。</li>
 </ul>
 </li>
 <li>公式层面将线性迭代转为非线性微分：<br>\dot{X}(t)&#x3D;F(X(t),A_{true}X(t-\tau))+w(t)</li>
@@ -141,7 +141,8 @@
 
 <p>然后运行以下 Python 代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tvb.simulator.lab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 实例化并配置结构连接 (这里使用 TVB 自带的默认 76 节点人类脑网络)</span></span><br><span class="line"><span class="comment"># 在实际研究中，你可以将其替换为 HCP 模板或特定病人的 DTI 矩阵</span></span><br><span class="line">conn = connectivity.Connectivity.from_file()</span><br><span class="line">conn.configure()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 提取真实的连接权重矩阵 (Ground Truth A_true) 和传导延迟信息</span></span><br><span class="line">weights = conn.weights</span><br><span class="line">tract_lengths = conn.tract_lengths</span><br></pre></td></tr></table></figure>
-<p><img src="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png" alt="Structural Connectivity"></p>
+
+<p><img src="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp" alt="Structural Connectivity"></p>
 <p>这是脑连接，可以看出很明显的特征，例如连接稀疏、非对称矩阵（有向图）、存在明显的模块化特征，这就是一个合格的网络——高度稀疏以节省代谢能量，且具有明确的输入&#x2F;输出方向性。</p>
 <p>第二步“构建动力学系统”</p>
 <p>真实的颅内脑电绝不是单一纯正弦波（比如纯粹的 Gamma），而是复杂动力学系统的叠加表现：</p>
@@ -164,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" data-id="cmnesbw2y0000h4ut93fwdybw" data-title="The Virtual Brain Python 教程" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" data-id="cmnesqk2n0001d8ut3x1i8n2p" data-title="The Virtual Brain Python 教程" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
