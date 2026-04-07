@@ -1,107 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>The Virtual Brain Python 教程 | 象拔蚌沙滩</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本教程仅介绍 Python 中的 tvb 包（源码：https:&#x2F;&#x2F;github.com&#x2F;the-virtual-brain&#x2F;tvb-root），不涉及 The Virtual Brain 作为独立仿真软件的使用。官方网站：https:&#x2F;&#x2F;www.thevirtualbrain.org&#x2F;tvb&#x2F;zwei&#x2F;，官方文档：https:&#x2F;&#x2F;docs.thevirtualbrain.org。本文将帮助你在">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>The Virtual Brain Python 教程 | 象拔蚌沙滩</title><meta name="author" content="象拔蚌"><meta name="copyright" content="象拔蚌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本教程仅介绍 Python 中的 tvb 包（源码：https:&#x2F;&#x2F;github.com&#x2F;the-virtual-brain&#x2F;tvb-root），不涉及 The Virtual Brain 作为独立仿真软件的使用。官方网站：https:&#x2F;&#x2F;www.thevirtualbrain.org&#x2F;tvb&#x2F;zwei&#x2F;官方文档：https:&#x2F;&#x2F;docs.thevirtualbrain.org。本文将帮助你在 P">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Virtual Brain Python 教程">
-<meta property="og:url" content="http://example.com/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:url" content="https://hpjxiangbabang.github.io/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/">
 <meta property="og:site_name" content="象拔蚌沙滩">
-<meta property="og:description" content="本教程仅介绍 Python 中的 tvb 包（源码：https:&#x2F;&#x2F;github.com&#x2F;the-virtual-brain&#x2F;tvb-root），不涉及 The Virtual Brain 作为独立仿真软件的使用。官方网站：https:&#x2F;&#x2F;www.thevirtualbrain.org&#x2F;tvb&#x2F;zwei&#x2F;，官方文档：https:&#x2F;&#x2F;docs.thevirtualbrain.org。本文将帮助你在">
+<meta property="og:description" content="本教程仅介绍 Python 中的 tvb 包（源码：https:&#x2F;&#x2F;github.com&#x2F;the-virtual-brain&#x2F;tvb-root），不涉及 The Virtual Brain 作为独立仿真软件的使用。官方网站：https:&#x2F;&#x2F;www.thevirtualbrain.org&#x2F;tvb&#x2F;zwei&#x2F;官方文档：https:&#x2F;&#x2F;docs.thevirtualbrain.org。本文将帮助你在 P">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp">
+<meta property="og:image" content="https://hpjxiangbabang.github.io/images/The%20Virtual%20Brain.png">
 <meta property="article:published_time" content="2026-03-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-31T15:52:37.292Z">
-<meta property="article:author" content="何文俊">
+<meta property="article:modified_time" content="2026-04-07T17:18:43.542Z">
+<meta property="article:author" content="象拔蚌">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp">
-  
-    <link rel="alternate" href="/atom.xml" title="象拔蚌沙滩" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">象拔蚌沙滩</a>
-      </h1>
+<meta name="twitter:image" content="https://hpjxiangbabang.github.io/images/The%20Virtual%20Brain.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Virtual Brain Python 教程",
+  "url": "https://hpjxiangbabang.github.io/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/",
+  "image": "https://hpjxiangbabang.github.io/images/The%20Virtual%20Brain.png",
+  "datePublished": "2026-03-30T16:00:00.000Z",
+  "dateModified": "2026-04-07T17:18:43.542Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "象拔蚌",
+      "url": "https://hpjxiangbabang.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://hpjxiangbabang.github.io/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
-      <div class="outer">
-        <section id="main"><article id="post-The Virtual Brain Python教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2026-03-30T16:00:00.000Z" itemprop="datePublished">2026-03-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      The Virtual Brain Python 教程
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>本教程仅介绍 Python 中的 <code>tvb</code> 包（源码：<a target="_blank" rel="noopener" href="https://github.com/the-virtual-brain/tvb-root%EF%BC%89%EF%BC%8C%E4%B8%8D%E6%B6%89%E5%8F%8A">https://github.com/the-virtual-brain/tvb-root），不涉及</a> The Virtual Brain 作为独立仿真软件的使用。<br>官方网站：<a target="_blank" rel="noopener" href="https://www.thevirtualbrain.org/tvb/zwei/%EF%BC%8C">https://www.thevirtualbrain.org/tvb/zwei/，</a><br>官方文档：<a target="_blank" rel="noopener" href="https://docs.thevirtualbrain.org./">https://docs.thevirtualbrain.org。</a><br>本文将帮助你在 Python 中使用 The Virtual Brain (TVB) 进行神经动力学建模，并生成仿真颅内脑电（iEEG&#x2F;sEEG）信号。</p>
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: false,
+    rightside: false,
+  },
+  autoDarkmode: false,
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'The Virtual Brain Python 教程',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/The%20Virtual%20Brain.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">象拔蚌沙滩</span></a><a class="nav-page-title" href="/"><span class="site-name">The Virtual Brain Python 教程</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">The Virtual Brain Python 教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-30T16:00:00.000Z" title="发表于 2026-03-31 00:00:00">2026-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-07T17:18:43.542Z" title="更新于 2026-04-08 01:18:43">2026-04-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>本教程仅介绍 Python 中的 <code>tvb</code> 包（源码：<a target="_blank" rel="noopener" href="https://github.com/the-virtual-brain/tvb-root%EF%BC%89%EF%BC%8C%E4%B8%8D%E6%B6%89%E5%8F%8A">https://github.com/the-virtual-brain/tvb-root），不涉及</a> The Virtual Brain 作为独立仿真软件的使用。<br>官方网站：<a target="_blank" rel="noopener" href="https://www.thevirtualbrain.org/tvb/zwei/">https://www.thevirtualbrain.org/tvb/zwei/</a><br>官方文档：<a target="_blank" rel="noopener" href="https://docs.thevirtualbrain.org./">https://docs.thevirtualbrain.org。</a><br>本文将帮助你在 Python 中使用 The Virtual Brain (TVB) 进行神经动力学建模，并生成仿真颅内脑电（iEEG&#x2F;sEEG）信号。</p>
 <p>TVB 仿真的核心逻辑与组件映射<br>TVB 的底层逻辑通过常微分方程（ODEs）模拟大尺度脑网络中神经元群体的平均活动。要生成可用的仿真数据，需配置四个核心组件：</p>
 <ol>
 <li><p>结构连接 (Connectivity)</p>
@@ -140,9 +197,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tvb-library</span><br></pre></td></tr></table></figure>
 
 <p>然后运行以下 Python 代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tvb.simulator.lab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 实例化并配置结构连接 (这里使用 TVB 自带的默认 76 节点人类脑网络)</span></span><br><span class="line"><span class="comment"># 在实际研究中，你可以将其替换为 HCP 模板或特定病人的 DTI 矩阵</span></span><br><span class="line">conn = connectivity.Connectivity.from_file()</span><br><span class="line">conn.configure()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 提取真实的连接权重矩阵 (Ground Truth A_true) 和传导延迟信息</span></span><br><span class="line">weights = conn.weights</span><br><span class="line">tract_lengths = conn.tract_lengths</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tvb.simulator.lab <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 实例化并配置结构连接 (这里使用 TVB 自带的默认 76 节点人类脑网络)</span></span><br><span class="line"><span class="comment"># 在实际研究中，可以将其替换为 HCP 模板或特定病人的 DTI 矩阵</span></span><br><span class="line">conn = connectivity.Connectivity.from_file()</span><br><span class="line">conn.configure()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 提取真实的连接权重矩阵和传导延迟信息</span></span><br><span class="line">weights = conn.weights</span><br><span class="line">tract_lengths = conn.tract_lengths</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp" alt="Structural Connectivity"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/9919c6680530b57d5386d061a12a0990c24d2ce4.png@1e_1c.webp" alt="Structural Connectivity"></p>
 <p>这是脑连接，可以看出很明显的特征，例如连接稀疏、非对称矩阵（有向图）、存在明显的模块化特征，这就是一个合格的网络——高度稀疏以节省代谢能量，且具有明确的输入&#x2F;输出方向性。</p>
 <p>第二步“构建动力学系统”</p>
 <p>真实的颅内脑电绝不是单一纯正弦波（比如纯粹的 Gamma），而是复杂动力学系统的叠加表现：</p>
@@ -161,121 +218,4 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.signal <span class="keyword">as</span> signal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 神经群体模型：Jansen-Rit（模拟皮层柱动力学）</span></span><br><span class="line"><span class="comment"># TVB 默认参数已能产生具有生理意义的混合震荡</span></span><br><span class="line">model_jr = models.JansenRit(</span><br><span class="line">    mu=np.array([<span class="number">0.1085</span>]),     <span class="comment"># 外部输入参数（控制兴奋程度）</span></span><br><span class="line">    v0=np.array([<span class="number">6.0</span>]),        <span class="comment"># 触发动作电位阈值</span></span><br><span class="line">    r=np.array([<span class="number">0.56</span>])         <span class="comment"># 突触响应陡峭度</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 节点间耦合函数：线性耦合</span></span><br><span class="line"><span class="comment"># 节点 j 活动乘以 A_true 权重后，线性叠加到节点 i</span></span><br><span class="line"><span class="comment"># 需弱耦合以防正反馈数值发散</span></span><br><span class="line">coupling_linear = coupling.Linear(a=np.array([<span class="number">0.0005</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 随机积分器：HeunStochastic（引入生理噪声）</span></span><br><span class="line">integrator_stoch = integrators.HeunStochastic(</span><br><span class="line">    dt=<span class="number">0.1</span>,  <span class="comment"># 仿真步长 0.1ms（等效 10000Hz）</span></span><br><span class="line">    noise=noise.Additive(nsig=np.array([<span class="number">0.0001</span>]))  <span class="comment"># 噪声强度</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 配置并运行短时仿真（2000ms）</span></span><br><span class="line">sim = simulator.Simulator(</span><br><span class="line">    model=model_jr,</span><br><span class="line">    connectivity=conn,</span><br><span class="line">    coupling=coupling_linear,</span><br><span class="line">    integrator=integrator_stoch,</span><br><span class="line">    monitors=(monitors.Raw(),),</span><br><span class="line">    simulation_length=<span class="number">2000</span></span><br><span class="line">)</span><br><span class="line">sim.configure()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取仿真结果</span></span><br><span class="line">(time, raw_data), = sim.run()</span><br></pre></td></tr></table></figure>
 
 <p>这里要注意，Jansen-Rit 模型的微分方程非常敏感。当节点之间的耦合强度（Coupling Strength）过大，或者求解微分方程的时间步长（dt）不够小时，网络中相邻脑区的兴奋性信号会产生强烈的正反馈。<br>在最开始，我设置了0.0001的耦合强度(a)，0.5ms的时间步长 (dt)，仿真的“膜电位”在 1.4 秒左右瞬间飙升到无穷大（在 Python 中变成了 NaN 或 Inf）。并且因为数组中出现了 NaN，所以后续我也无法计算频率谱。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" data-id="cmnesqk2n0001d8ut3x1i8n2p" data-title="The Virtual Brain Python 教程" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">CAAFE：基于大模型的自动特征工程</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">三月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/">The Virtual Brain Python 教程</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">CAAFE：基于大模型的自动特征工程</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 何文俊<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://hpjxiangbabang.github.io">象拔蚌</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://hpjxiangbabang.github.io/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/">https://hpjxiangbabang.github.io/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://hpjxiangbabang.github.io" target="_blank">象拔蚌沙滩</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_facebook"></a><a class="a2a_button_x"></a><a class="a2a_button_wechat"></a><a class="a2a_button_sina_weibo"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">象拔蚌</div><div class="author-info-description">记录学习与生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hpjxiangbabang"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Hpjxiangbabang" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:your.email@example.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" title="The Virtual Brain Python 教程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/The%20Virtual%20Brain.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="The Virtual Brain Python 教程"/></a><div class="content"><a class="title" href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" title="The Virtual Brain Python 教程">The Virtual Brain Python 教程</a><time datetime="2026-03-30T16:00:00.000Z" title="发表于 2026-03-31 00:00:00">2026-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" title="CAAFE：基于大模型的自动特征工程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/CAAFE.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CAAFE：基于大模型的自动特征工程"/></a><div class="content"><a class="title" href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" title="CAAFE：基于大模型的自动特征工程">CAAFE：基于大模型的自动特征工程</a><time datetime="2024-12-18T16:00:00.000Z" title="发表于 2024-12-19 00:00:00">2024-12-19</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 象拔蚌</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

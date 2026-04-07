@@ -1,229 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>CAAFE：基于大模型的自动特征工程 | 象拔蚌沙滩</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="阅读论文: Large Language Models for Automated  Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering研究背景: 之前做了一些光谱的分类工作，拉曼光谱的机器学习分析是建立光谱和标签的映射来抽象出光谱中的复杂关系。这种模式在生物医学环境中的光谱的分析中遇到">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>CAAFE：基于大模型的自动特征工程 | 象拔蚌沙滩</title><meta name="author" content="象拔蚌"><meta name="copyright" content="象拔蚌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="阅读论文: Large Language Models for Automated  Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering研究背景: 之前做了一些光谱的分类工作，拉曼光谱的机器学习分析是建立光谱和标签的映射来抽象出光谱中的复杂关系。这种模式在生物医学环境中的光谱的分析中遇到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CAAFE：基于大模型的自动特征工程">
-<meta property="og:url" content="http://example.com/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/index.html">
+<meta property="og:url" content="https://hpjxiangbabang.github.io/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">
 <meta property="og:site_name" content="象拔蚌沙滩">
 <meta property="og:description" content="阅读论文: Large Language Models for Automated  Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering研究背景: 之前做了一些光谱的分类工作，拉曼光谱的机器学习分析是建立光谱和标签的映射来抽象出光谱中的复杂关系。这种模式在生物医学环境中的光谱的分析中遇到">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/dc4b03906c4e28de564b3451e36d79045017494a.png">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/337ab5ac8d90faea66c4f88ed1819a235ccbb89f.png">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/b07581f488b625a6895859e7086851a9ea261dcc.png">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/ac2ed8e1473fb8b0e2f4d074166587cca4884ee3.png">
-<meta property="og:image" content="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png">
-<meta property="article:published_time" content="2024-12-19T10:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-29T08:45:22.672Z">
-<meta property="article:author" content="何文俊">
+<meta property="og:image" content="https://hpjxiangbabang.github.io/images/CAAFE.png">
+<meta property="article:published_time" content="2024-12-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-07T17:20:46.245Z">
+<meta property="article:author" content="象拔蚌">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i0.hdslb.com/bfs/openplatform/dc4b03906c4e28de564b3451e36d79045017494a.png">
-  
-    <link rel="alternate" href="/atom.xml" title="象拔蚌沙滩" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">象拔蚌沙滩</a>
-      </h1>
+<meta name="twitter:image" content="https://hpjxiangbabang.github.io/images/CAAFE.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CAAFE：基于大模型的自动特征工程",
+  "url": "https://hpjxiangbabang.github.io/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/",
+  "image": "https://hpjxiangbabang.github.io/images/CAAFE.png",
+  "datePublished": "2024-12-18T16:00:00.000Z",
+  "dateModified": "2026-04-07T17:20:46.245Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "象拔蚌",
+      "url": "https://hpjxiangbabang.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://hpjxiangbabang.github.io/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
-      <div class="outer">
-        <section id="main"><article id="post-CAAFE：基于大模型的自动特征工程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2024-12-19T10:00:00.000Z" itemprop="datePublished">2024-12-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      CAAFE：基于大模型的自动特征工程
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <meta name="referrer" content="no-referrer" />
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-<p>阅读论文: Large Language Models for Automated  Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering<br>研究背景: 之前做了一些光谱的分类工作，拉曼光谱的<strong>机器学习</strong>分析是建立光谱和标签的映射来抽象出光谱中的复杂关系。<br>这种模式在生物医学环境中的光谱的分析中遇到了困难，例如细胞和组织等，这是因为生物医学的光谱非常复杂，包含了大量的特征，同时还伴有随机噪声和生物学噪声。<br>同时，语言大模型囊括了广泛的领域知识，可用于自动化各种数据科学任务，包括那些需要上下文信息的任务。<br>使用语言大模型将光谱数据和标签做端到端的预测，这种方法需要将整个训练集编码为字符串,并使用基于Transformer的架构进行处理。<br>然而，语言大模型难以解释或验证，其行为的一致性也不如经典的机器学习算法。<br>考虑到，学习其实是一个从原始数据中提取特征，再进行建模以获得知识的一个过程。<br><img src="https://i0.hdslb.com/bfs/openplatform/dc4b03906c4e28de564b3451e36d79045017494a.png" alt="机器学习过程"><br>原始的特征工程中，从原始数据中提取、转换和选择特征，以提高模型的性能。手动方法进行特征构建和选择，不仅是一项非常耗时的任务，并且对数据处理经验和领域知识有较高要求。<br>自动特征工程则是利用算法和自动化工具来完成特征生成、特征选择和特征优化的过程。其目的是通过减少人工干预，使得模型能够在不同类型的数据上更快地找到高质量的特征组合，最终提升模型的表现。<strong>但是其表现取决于算法与数据的适配度。</strong><br>这篇论文Context-Aware Automated Feature Engineering (CAAFE)是一种利用大型语言模型（LLMs）来自动生成数据特征的方法。<br><img src="https://i0.hdslb.com/bfs/openplatform/337ab5ac8d90faea66c4f88ed1819a235ccbb89f.png" alt="特征工程"><br>整个流程图如下所示：<br><img src="https://i0.hdslb.com/bfs/openplatform/b07581f488b625a6895859e7086851a9ea261dcc.png" alt="CAAFE流程图"><br>CAAFE接受数据集以及用户指定的上下文信息，并通过<strong>迭代</strong>完成<strong>自动特征工程</strong>。<br>方法将训练数据集 Dtrain 和验证数据集 Dvalid 以及训练数据集和特征的背景描述作为输入。根据这些信息，CAAFE 构建了一个提示，也就是给大模型的指令，其中包含数据集和特征工程任务的具体内容。该方法会在验证数据集上执行多次迭代特征更改和评估。在每次迭代中，LLM 都会生成代码，然后在当前的 Dtrain 和 Dvalid 上执行，最终生成转换后的数据集 Dtrain′ 和 Dvalid′。然后，我们使用Dtrain′拟合一个 ML 分类器，并在Dvalid′上评估其性能 P ′。如果 P ′ 超过了在Dtrain上训练并在Dvalid上评估所获得的性能 P，则保留该特征，并更新数据集Dtrain和Dvalid。否则，特征将被剔除，数据集保持不变。<br>那么如何构建用于执行特征工程的提示呢？<br>在提示中，LLM 被指示为后续预测任务创建有价值的特征，并为新增特征的效用提供理由。它还会指示放弃不必要的特征，例如当这些特征的信息已被其他创建的特征捕获时。<br>提示会包含以下内容：<br>用户生成的数据集描述，其中包含数据集的上下文信息；<br>添加上下文信息的特征名称，允许LLM生成代码根据名称对特征进行索引；<br>数据的类型(例如float，int、类别、string)——这增加了生成的代码如何处理特征的信息；<br>缺失值的比例，缺失值对于生成代码来说是额外的挑战；<br>数据集的10个随机行，提供特征的规模、编码，等等信息。<br>此外，提示还为生成代码和解释的预期形式提供了模板。在提示时添加模板是提高回复质量的常用技术。<br>使用思维链指令——指示一系列中间推理步骤——这是另一种有效的提示技术。该提示包括一个代码生成特征的思维链示例：首先提供生成特征的高级含义和有用性，提供用于生成特征的特征名称，检索它需要接受的示例值，最后编写一行代码。<br>如果代码块的执行过程中出现错误，该错误将被传递给LLM，用于下一次代码生成迭代。我们注意到，在实验中，CAAFE 利用这种技术从错误中恢复过来。<br><img src="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png" alt="提示内容"><br>文章中提款了一个例子，来源于经典的井字棋数据，感兴趣的同学可以找到这个数据来实验一下。<br>实验的过程大概是这样的：<br><img src="https://i0.hdslb.com/bfs/openplatform/ac2ed8e1473fb8b0e2f4d074166587cca4884ee3.png" alt="井字棋实验过程"><br>关于自动特征工程，它的baseline其实不多，也就深度特征合成DFS(2015)、AutoFeat(2019)、FETCH和OpenFE。<br>分类器有逻辑回归、随机森林和TabPFN。<br>在数据集的挑选上，实验者考虑到了LLM训练的数据，训练时如果包含了这些数据，其实相当于开卷考试。于是实验者找了两部分数据，一部分是在2021年9月之前发布，来自Open ML的广为人知的数据集，这些数据集可能构成训练语料库的一部分；另一部分是在2021年9月之后发布，来自Kaggle的鲜为人知的数据集，这些数据集网络爬虫难以访问。<br>最后的实验结果：<br><img src="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png" alt="实验结果"><br>有些不一定好，但是还是有点提升。</p>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" data-id="cmnesqk2e0000d8utaxyobih7" data-title="CAAFE：基于大模型的自动特征工程" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
       
-      
-      
-    </footer>
-  </div>
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-    
-<nav id="article-nav">
-  
-    <a href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          The Virtual Brain Python 教程
-        
-      </div>
-    </a>
-  
-  
-</nav>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: false,
+    rightside: false,
+  },
+  autoDarkmode: false,
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CAAFE：基于大模型的自动特征工程',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/CAAFE.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">象拔蚌沙滩</span></a><a class="nav-page-title" href="/"><span class="site-name">CAAFE：基于大模型的自动特征工程</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CAAFE：基于大模型的自动特征工程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-18T16:00:00.000Z" title="发表于 2024-12-19 00:00:00">2024-12-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-07T17:20:46.245Z" title="更新于 2026-04-08 01:20:46">2026-04-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><meta name="referrer" content="no-referrer" />
 
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">三月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/">The Virtual Brain Python 教程</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">CAAFE：基于大模型的自动特征工程</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 何文俊<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+<p>阅读论文: Large Language Models for Automated  Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering<br>研究背景: 之前做了一些光谱的分类工作，拉曼光谱的<strong>机器学习</strong>分析是建立光谱和标签的映射来抽象出光谱中的复杂关系。<br>这种模式在生物医学环境中的光谱的分析中遇到了困难，例如细胞和组织等，这是因为生物医学的光谱非常复杂，包含了大量的特征，同时还伴有随机噪声和生物学噪声。<br>同时，语言大模型囊括了广泛的领域知识，可用于自动化各种数据科学任务，包括那些需要上下文信息的任务。<br>使用语言大模型将光谱数据和标签做端到端的预测，这种方法需要将整个训练集编码为字符串,并使用基于Transformer的架构进行处理。<br>然而，语言大模型难以解释或验证，其行为的一致性也不如经典的机器学习算法。<br>考虑到，学习其实是一个从原始数据中提取特征，再进行建模以获得知识的一个过程。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/dc4b03906c4e28de564b3451e36d79045017494a.png" alt="机器学习过程"><br>原始的特征工程中，从原始数据中提取、转换和选择特征，以提高模型的性能。手动方法进行特征构建和选择，不仅是一项非常耗时的任务，并且对数据处理经验和领域知识有较高要求。<br>自动特征工程则是利用算法和自动化工具来完成特征生成、特征选择和特征优化的过程。其目的是通过减少人工干预，使得模型能够在不同类型的数据上更快地找到高质量的特征组合，最终提升模型的表现。<strong>但是其表现取决于算法与数据的适配度。</strong><br>这篇论文Context-Aware Automated Feature Engineering (CAAFE)是一种利用大型语言模型（LLMs）来自动生成数据特征的方法。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/337ab5ac8d90faea66c4f88ed1819a235ccbb89f.png" alt="特征工程"><br>整个流程图如下所示：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/b07581f488b625a6895859e7086851a9ea261dcc.png" alt="CAAFE流程图"><br>CAAFE接受数据集以及用户指定的上下文信息，并通过<strong>迭代</strong>完成<strong>自动特征工程</strong>。<br>方法将训练数据集 Dtrain 和验证数据集 Dvalid 以及训练数据集和特征的背景描述作为输入。根据这些信息，CAAFE 构建了一个提示，也就是给大模型的指令，其中包含数据集和特征工程任务的具体内容。该方法会在验证数据集上执行多次迭代特征更改和评估。在每次迭代中，LLM 都会生成代码，然后在当前的 Dtrain 和 Dvalid 上执行，最终生成转换后的数据集 Dtrain′ 和 Dvalid′。然后，我们使用Dtrain′拟合一个 ML 分类器，并在Dvalid′上评估其性能 P ′。如果 P ′ 超过了在Dtrain上训练并在Dvalid上评估所获得的性能 P，则保留该特征，并更新数据集Dtrain和Dvalid。否则，特征将被剔除，数据集保持不变。<br>那么如何构建用于执行特征工程的提示呢？<br>在提示中，LLM 被指示为后续预测任务创建有价值的特征，并为新增特征的效用提供理由。它还会指示放弃不必要的特征，例如当这些特征的信息已被其他创建的特征捕获时。<br>提示会包含以下内容：<br>用户生成的数据集描述，其中包含数据集的上下文信息；<br>添加上下文信息的特征名称，允许LLM生成代码根据名称对特征进行索引；<br>数据的类型(例如float，int、类别、string)——这增加了生成的代码如何处理特征的信息；<br>缺失值的比例，缺失值对于生成代码来说是额外的挑战；<br>数据集的10个随机行，提供特征的规模、编码，等等信息。<br>此外，提示还为生成代码和解释的预期形式提供了模板。在提示时添加模板是提高回复质量的常用技术。<br>使用思维链指令——指示一系列中间推理步骤——这是另一种有效的提示技术。该提示包括一个代码生成特征的思维链示例：首先提供生成特征的高级含义和有用性，提供用于生成特征的特征名称，检索它需要接受的示例值，最后编写一行代码。<br>如果代码块的执行过程中出现错误，该错误将被传递给LLM，用于下一次代码生成迭代。我们注意到，在实验中，CAAFE 利用这种技术从错误中恢复过来。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png" alt="提示内容"><br>文章中提款了一个例子，来源于经典的井字棋数据，感兴趣的同学可以找到这个数据来实验一下。<br>实验的过程大概是这样的：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/ac2ed8e1473fb8b0e2f4d074166587cca4884ee3.png" alt="井字棋实验过程"><br>关于自动特征工程，它的baseline其实不多，也就深度特征合成DFS(2015)、AutoFeat(2019)、FETCH和OpenFE。<br>分类器有逻辑回归、随机森林和TabPFN。<br>在数据集的挑选上，实验者考虑到了LLM训练的数据，训练时如果包含了这些数据，其实相当于开卷考试。于是实验者找了两部分数据，一部分是在2021年9月之前发布，来自Open ML的广为人知的数据集，这些数据集可能构成训练语料库的一部分；另一部分是在2021年9月之后发布，来自Kaggle的鲜为人知的数据集，这些数据集网络爬虫难以访问。<br>最后的实验结果：<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/openplatform/8c779674c0fb7257928f0936e98033723757419f.png" alt="实验结果"><br>有些不一定好，但是还是有点提升。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://hpjxiangbabang.github.io">象拔蚌</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://hpjxiangbabang.github.io/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">https://hpjxiangbabang.github.io/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://hpjxiangbabang.github.io" target="_blank">象拔蚌沙滩</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_facebook"></a><a class="a2a_button_x"></a><a class="a2a_button_wechat"></a><a class="a2a_button_sina_weibo"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">象拔蚌</div><div class="author-info-description">记录学习与生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hpjxiangbabang"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Hpjxiangbabang" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:your.email@example.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" title="The Virtual Brain Python 教程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/The%20Virtual%20Brain.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="The Virtual Brain Python 教程"/></a><div class="content"><a class="title" href="/2026/03/31/The%20Virtual%20Brain%20Python%E6%95%99%E7%A8%8B/" title="The Virtual Brain Python 教程">The Virtual Brain Python 教程</a><time datetime="2026-03-30T16:00:00.000Z" title="发表于 2026-03-31 00:00:00">2026-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" title="CAAFE：基于大模型的自动特征工程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/CAAFE.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CAAFE：基于大模型的自动特征工程"/></a><div class="content"><a class="title" href="/2024/12/19/CAAFE%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" title="CAAFE：基于大模型的自动特征工程">CAAFE：基于大模型的自动特征工程</a><time datetime="2024-12-18T16:00:00.000Z" title="发表于 2024-12-19 00:00:00">2024-12-19</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 象拔蚌</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
